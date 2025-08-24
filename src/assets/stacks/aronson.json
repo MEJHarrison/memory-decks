@@ -1,0 +1,264 @@
+{
+  "cards": [
+    {
+      "position": 1,
+      "rank": "Jack",
+      "suit": "Spades"
+    },
+    {
+      "position": 2,
+      "rank": "King",
+      "suit": "Clubs"
+    },
+    {
+      "position": 3,
+      "rank": "5",
+      "suit": "Clubs"
+    },
+    {
+      "position": 4,
+      "rank": "2",
+      "suit": "Hearts"
+    },
+    {
+      "position": 5,
+      "rank": "9",
+      "suit": "Spades"
+    },
+    {
+      "position": 6,
+      "rank": "Ace",
+      "suit": "Spades"
+    },
+    {
+      "position": 7,
+      "rank": "3",
+      "suit": "Hearts"
+    },
+    {
+      "position": 8,
+      "rank": "6",
+      "suit": "Clubs"
+    },
+    {
+      "position": 9,
+      "rank": "8",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 10,
+      "rank": "Ace",
+      "suit": "Clubs"
+    },
+    {
+      "position": 11,
+      "rank": "10",
+      "suit": "Spades"
+    },
+    {
+      "position": 12,
+      "rank": "5",
+      "suit": "Hearts"
+    },
+    {
+      "position": 13,
+      "rank": "2",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 14,
+      "rank": "King",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 15,
+      "rank": "7",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 16,
+      "rank": "8",
+      "suit": "Clubs"
+    },
+    {
+      "position": 17,
+      "rank": "3",
+      "suit": "Spades"
+    },
+    {
+      "position": 18,
+      "rank": "Ace",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 19,
+      "rank": "7",
+      "suit": "Spades"
+    },
+    {
+      "position": 20,
+      "rank": "5",
+      "suit": "Spades"
+    },
+    {
+      "position": 21,
+      "rank": "Queen",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 22,
+      "rank": "Ace",
+      "suit": "Hearts"
+    },
+    {
+      "position": 23,
+      "rank": "8",
+      "suit": "Spades"
+    },
+    {
+      "position": 24,
+      "rank": "3",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 25,
+      "rank": "7",
+      "suit": "Hearts"
+    },
+    {
+      "position": 26,
+      "rank": "Queen",
+      "suit": "Hearts"
+    },
+    {
+      "position": 27,
+      "rank": "5",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 28,
+      "rank": "7",
+      "suit": "Clubs"
+    },
+    {
+      "position": 29,
+      "rank": "4",
+      "suit": "Hearts"
+    },
+    {
+      "position": 30,
+      "rank": "King",
+      "suit": "Hearts"
+    },
+    {
+      "position": 31,
+      "rank": "4",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 32,
+      "rank": "10",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 33,
+      "rank": "Jack",
+      "suit": "Clubs"
+    },
+    {
+      "position": 34,
+      "rank": "Jack",
+      "suit": "Hearts"
+    },
+    {
+      "position": 35,
+      "rank": "10",
+      "suit": "Clubs"
+    },
+    {
+      "position": 36,
+      "rank": "Jack",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 37,
+      "rank": "4",
+      "suit": "Spades"
+    },
+    {
+      "position": 38,
+      "rank": "10",
+      "suit": "Hearts"
+    },
+    {
+      "position": 39,
+      "rank": "6",
+      "suit": "Hearts"
+    },
+    {
+      "position": 40,
+      "rank": "3",
+      "suit": "Clubs"
+    },
+    {
+      "position": 41,
+      "rank": "2",
+      "suit": "Spades"
+    },
+    {
+      "position": 42,
+      "rank": "9",
+      "suit": "Hearts"
+    },
+    {
+      "position": 43,
+      "rank": "King",
+      "suit": "Spades"
+    },
+    {
+      "position": 44,
+      "rank": "6",
+      "suit": "Spades"
+    },
+    {
+      "position": 45,
+      "rank": "4",
+      "suit": "Clubs"
+    },
+    {
+      "position": 46,
+      "rank": "8",
+      "suit": "Hearts"
+    },
+    {
+      "position": 47,
+      "rank": "9",
+      "suit": "Clubs"
+    },
+    {
+      "position": 48,
+      "rank": "Queen",
+      "suit": "Spades"
+    },
+    {
+      "position": 49,
+      "rank": "6",
+      "suit": "Diamonds"
+    },
+    {
+      "position": 50,
+      "rank": "Queen",
+      "suit": "Clubs"
+    },
+    {
+      "position": 51,
+      "rank": "2",
+      "suit": "Clubs"
+    },
+    {
+      "position": 52,
+      "rank": "9",
+      "suit": "Diamonds"
+    }
+  ]
+}
