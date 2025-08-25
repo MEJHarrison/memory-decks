@@ -1,32 +1,23 @@
-export default function CardSymbol({ rank, suit }) {
-    const suitLetter = suit[0].toUpperCase();
+export default function CardSymbol({ card }) {
+    const rankLetter = card.rank === '10' ? '10' : card.rank[0].toUpperCase();
 
-    let symbolStyles = 'flex h-52 w-32 items-center justify-center rounded-lg bg-white text-5xl shadow-lg ';
-
-    if (suitLetter === 'D' || suitLetter === 'H') {
-        symbolStyles += 'text-red-600';
-    } else {
-        symbolStyles += 'text-black';
-    }
-
-    let cardSymbol = '';
-
-    if (suitLetter === 'C') {
-        cardSymbol = '♣️';
-    } else if (suitLetter === 'H') {
-        cardSymbol = '♥️';
-    } else if (suitLetter === 'S') {
-        cardSymbol = '♠️';
-    } else {
-        cardSymbol = '♦️';
+    function getSuitSymbol(suitLetter) {
+        switch (suitLetter) {
+            case 'C':
+                return '♣️';
+            case 'H':
+                return '♥️';
+            case 'S':
+                return '♠️';
+            case 'D':
+                return '♦️';
+        }
     }
 
     return (
-        <div className="flex justify-center">
-            <span className={symbolStyles}>
-                {rank}
-                {cardSymbol}
-            </span>
+        <div className="flex w-32 items-center justify-center">
+            <div className="p-1 text-4xl">{rankLetter}</div>
+            <div className="p-1 text-2xl">{getSuitSymbol(card.suit[0])}</div>
         </div>
     );
 }
