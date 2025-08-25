@@ -12,6 +12,8 @@ const QuizContext = createContext({
 
 export function QuizProvider({ children }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [answers, setAnswers] = useState([]);
     const [quiz] = useState(() => generateQuiz(10));
 
     function getCurrentQuestion() {
@@ -33,12 +35,16 @@ export function QuizProvider({ children }) {
         }
     }
 
-    function handleAnswer(selected) {
-        if (selected.position === getCurrentQuestion().answerCard.position) {
-            console.log('✅ Correct!');
-        } else {
-            console.log('❌ Wrong!');
+    function handleAnswer(selectedCard) {
+        const questionText = getQuestionText();
+        const answerCard = getCurrentQuestion().answerCard;
+        const isCorrect = selectedCard.position === answerCard.position;
+
+        if (isCorrect) {
+            setScore((prev) => prev + 1);
         }
+
+        setAnswers((prev) => [...prev, { questionText, selectedCard, answerCard, isCorrect }]);
 
         setCurrentQuestionIndex((prevIndex) => {
             if (prevIndex + 1 < quiz.length) {

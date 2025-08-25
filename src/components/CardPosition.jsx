@@ -20,7 +20,7 @@ export default function CardPosition({ card, size = 'Large' }) {
 
     if (size === 'Large') {
         style =
-            'flex h-52 w-32 items-center justify-center rounded-lg border-2 border-slate-300 bg-white text-black shadow-lg';
+            'flex h-52 w-32 items-center justify-center rounded-lg border-2 border-slate-300 bg-white text-black shadow-lg md:h-64 md:w-44 lg:w-52';
     } else {
         style = 'flex h-16 w-32 items-center justify-center rounded-lg bg-white text-black shadow-md';
     }
