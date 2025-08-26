@@ -8,7 +8,7 @@ export default function CardImage({ card }) {
             <img
                 src={`/cards/${filename}`}
                 alt={`${card.rank} of ${card.suit}`}
-                className="w-32 shadow-lg md:w-44 lg:w-52"
+                className="w-40 shadow-lg md:w-44 lg:w-52"
             />
         </div>
     );

@@ -1,20 +1,56 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { generateQuiz } from '../utils/quizGenerator';
 
+function noop() {}
+
 const QuizContext = createContext({
     quiz: [],
+    generateNewQuiz: noop,
+    resetQuit: noop,
+    getCurrentQuestion: noop,
+    getQuestionText: noop,
+    onAnswer: noop,
+    numberOfQuestions: 10,
+    setNumberOfQuestions: noop,
     currentQuestionIndex: 0,
-    getCurrentQuestion: () => {},
-    getQuestionText: () => {},
-    onAnswer: () => {},
+    correctAnswers: 0,
+    answers: [],
 });
 
 export function QuizProvider({ children }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [score, setScore] = useState(0);
+    const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [numberOfQuestions, setNumberOfQuestions] = useState(10);
     const [answers, setAnswers] = useState([]);
-    const [quiz] = useState(() => generateQuiz(10));
+    const navigate = useNavigate();
+    const [quiz, setQuiz] = useState(() => generateQuiz(10));
+
+    useEffect(() => {
+        if (currentQuestionIndex >= quiz.length && quiz.length > 0) {
+            navigate('/results');
+        }
+    }, [currentQuestionIndex, quiz, navigate]);
+
+    function resetState() {
+        setCorrectAnswers(0);
+        setAnswers([]);
+        setCurrentQuestionIndex(0);
+    }
+
+    function resetQuiz() {
+        resetState();
+
+        setQuiz([]);
+    }
+
+    function generateNewQuiz() {
+        resetState();
+        console.log('numberOfQuestions', numberOfQuestions);
+
+        setQuiz(generateQuiz(numberOfQuestions));
+    }
 
     function getCurrentQuestion() {
         return quiz[currentQuestionIndex];
@@ -22,6 +58,8 @@ export function QuizProvider({ children }) {
 
     function getQuestionText() {
         const currentQuestion = getCurrentQuestion();
+
+        if (!currentQuestion) return '';
 
         switch (currentQuestion.type) {
             case 'nextCard':
@@ -41,32 +79,35 @@ export function QuizProvider({ children }) {
         const isCorrect = selectedCard.position === answerCard.position;
 
         if (isCorrect) {
-            setScore((prev) => prev + 1);
+            setCorrectAnswers((prev) => prev + 1);
         }
 
         setAnswers((prev) => [...prev, { questionText, selectedCard, answerCard, isCorrect }]);
 
-        setCurrentQuestionIndex((prevIndex) => {
-            if (prevIndex + 1 < quiz.length) {
-                return prevIndex + 1;
-            } else {
-                console.log('Quiz Complete');
-                return prevIndex;
-            }
-        });
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }
+
+    function handleFinish() {
+        navigate('/results');
     }
 
     const ctxValue = {
         quiz: quiz,
-        currentQuestionIndex,
-        getQuestionText: getQuestionText,
-        getCurrentQuestion: getCurrentQuestion,
+        generateNewQuiz,
+        resetQuiz,
+        getQuestionText,
+        getCurrentQuestion,
         onAnswer: handleAnswer,
+        numberOfQuestions,
+        setNumberOfQuestions,
+        currentQuestionIndex,
+        correctAnswers,
+        answers,
     };
 
     return <QuizContext.Provider value={ctxValue}>{children}</QuizContext.Provider>;
 }
 
-export function useQuiz() {
+export const useQuiz = () => {
     return useContext(QuizContext);
-}
+};

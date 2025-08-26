@@ -8,6 +8,8 @@ export default function CardQuestion() {
 
     const currentQuestion = getCurrentQuestion();
 
+    if (!currentQuestion) return null;
+
     return currentQuestion.type === 'cardAtPosition' ? (
         <CardPosition card={currentQuestion.questionCard} />
     ) : (

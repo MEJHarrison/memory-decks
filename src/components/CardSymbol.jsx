@@ -15,7 +15,7 @@ export default function CardSymbol({ card }) {
     }
 
     return (
-        <div className="flex w-32 items-center justify-center">
+        <div className="flex h-16 w-32 items-center justify-center">
             <div className="p-1 text-4xl">{rankLetter}</div>
             <div className="p-1 text-2xl">{getSuitSymbol(card.suit[0])}</div>
         </div>

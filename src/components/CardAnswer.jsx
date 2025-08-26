@@ -8,6 +8,9 @@ export default function CardAnswer() {
     const { getCurrentQuestion, onAnswer } = useQuiz();
 
     const currentQuestion = getCurrentQuestion();
+
+    if (!currentQuestion) return null;
+
     const questionAnswers = currentQuestion.answerCards;
     const isPosition = currentQuestion.type === 'positionOfCard';
 
