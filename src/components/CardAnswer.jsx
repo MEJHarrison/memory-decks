@@ -20,7 +20,7 @@ export default function CardAnswer() {
                 <button
                     key={answerCard.position}
                     onClick={() => onAnswer(answerCard)}
-                    className="rounded-xl border-2 border-transparent p-1 hover:border-emerald-400"
+                    className="rounded-xl border-2 border-transparent hover:border-emerald-400"
                 >
                     {/* Display this on screens > 640 width */}
                     <div className="hidden sm:block">

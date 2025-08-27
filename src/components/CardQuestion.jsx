@@ -13,6 +13,6 @@ export default function CardQuestion() {
     return currentQuestion.type === 'cardAtPosition' ? (
         <CardPosition card={currentQuestion.questionCard} />
     ) : (
-        <CardImage card={currentQuestion.questionCard} />
+        <CardImage card={currentQuestion.questionCard} className="w-40 shadow-lg md:w-44 lg:w-52" />
     );
 }

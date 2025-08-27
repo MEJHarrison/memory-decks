@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainMenu from './components/MainMenu';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
+import ViewStack from './components/ViewStack';
 
 import './App.css';
 import QuizSettings from './components/QuizSettings';
@@ -14,6 +15,7 @@ function App() {
             <Route path="/quiz-settings" element={<QuizSettings />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/view-stack" element={<ViewStack />} />
         </Routes>
     );
 }

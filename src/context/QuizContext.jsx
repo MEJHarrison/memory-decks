@@ -47,7 +47,6 @@ export function QuizProvider({ children }) {
 
     function generateNewQuiz() {
         resetState();
-        console.log('numberOfQuestions', numberOfQuestions);
 
         setQuiz(generateQuiz(numberOfQuestions));
     }
@@ -73,16 +72,18 @@ export function QuizProvider({ children }) {
         }
     }
 
-    function handleAnswer(selectedCard) {
+    function handleAnswer(selectedAnswer) {
         const questionText = getQuestionText();
-        const answerCard = getCurrentQuestion().answerCard;
-        const isCorrect = selectedCard.position === answerCard.position;
+        const currentQuestion = getCurrentQuestion();
+        const questionCard = currentQuestion.questionCard;
+        const answerCard = currentQuestion.answerCard;
+        const isCorrect = selectedAnswer.position === answerCard.position;
 
         if (isCorrect) {
             setCorrectAnswers((prev) => prev + 1);
         }
 
-        setAnswers((prev) => [...prev, { questionText, selectedCard, answerCard, isCorrect }]);
+        setAnswers((prev) => [...prev, { questionText, questionCard, answerCard, selectedAnswer, isCorrect }]);
 
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
