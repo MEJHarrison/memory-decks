@@ -50,14 +50,14 @@ function generateQuestion(type, index) {
     };
 }
 
-export function generateQuiz(numQuestions = 10) {
+export function generateQuiz(numQuestions = 10, minimumCard, maximumCard) {
     const types = ['nextCard', 'previousCard', 'positionOfCard', 'cardAtPosition'];
 
     const questions = [];
 
     for (let index = 0; index < numQuestions; index++) {
         const type = types[Math.floor(Math.random() * types.length)];
-        const cardIndex = Math.floor(Math.random() * deck.cards.length);
+        const cardIndex = Math.floor(Math.random() * (maximumCard - minimumCard + 1)) + (minimumCard - 1);
 
         questions.push(generateQuestion(type, cardIndex));
     }

@@ -10,7 +10,7 @@ export default function Quiz() {
         <div className="flex min-h-screen items-center justify-center p-4">
             <div className="flex flex-col items-center gap-20">
                 <QuizQuestion />
-                <h1>{getQuestionText()}</h1>
+                <h1 className="text-xl font-bold text-emerald-900 drop-shadow-sm">{getQuestionText()}</h1>
                 <QuizAnswer />
             </div>
         </div>

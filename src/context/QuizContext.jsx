@@ -8,12 +8,16 @@ function noop() {}
 const QuizContext = createContext({
     quiz: [],
     generateNewQuiz: noop,
-    resetQuit: noop,
+    resetQuiz: noop,
     getCurrentQuestion: noop,
     getQuestionText: noop,
     onAnswer: noop,
     numberOfQuestions: 10,
     setNumberOfQuestions: noop,
+    minimumCard: 1,
+    setMinimumCard: noop,
+    maximumCard: 52,
+    setMaximumCard: noop,
     currentQuestionIndex: 0,
     correctAnswers: 0,
     answers: [],
@@ -23,9 +27,11 @@ export function QuizProvider({ children }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [numberOfQuestions, setNumberOfQuestions] = useState(10);
+    const [minimumCard, setMinimumCard] = useState(1);
+    const [maximumCard, setMaximumCard] = useState(52);
     const [answers, setAnswers] = useState([]);
     const navigate = useNavigate();
-    const [quiz, setQuiz] = useState(() => generateQuiz(10));
+    const [quiz, setQuiz] = useState(() => generateQuiz(10, 1, 52));
 
     useEffect(() => {
         if (currentQuestionIndex >= quiz.length && quiz.length > 0) {
@@ -48,7 +54,7 @@ export function QuizProvider({ children }) {
     function generateNewQuiz() {
         resetState();
 
-        setQuiz(generateQuiz(numberOfQuestions));
+        setQuiz(generateQuiz(numberOfQuestions, minimumCard, maximumCard));
     }
 
     function getCurrentQuestion() {
@@ -78,12 +84,13 @@ export function QuizProvider({ children }) {
         const questionCard = currentQuestion.questionCard;
         const answerCard = currentQuestion.answerCard;
         const isCorrect = selectedAnswer.position === answerCard.position;
+        const type = currentQuestion.type;
 
         if (isCorrect) {
             setCorrectAnswers((prev) => prev + 1);
         }
 
-        setAnswers((prev) => [...prev, { questionText, questionCard, answerCard, selectedAnswer, isCorrect }]);
+        setAnswers((prev) => [...prev, { questionText, questionCard, answerCard, selectedAnswer, isCorrect, type }]);
 
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
@@ -101,6 +108,10 @@ export function QuizProvider({ children }) {
         onAnswer: handleAnswer,
         numberOfQuestions,
         setNumberOfQuestions,
+        minimumCard,
+        setMinimumCard,
+        maximumCard,
+        setMaximumCard,
         currentQuestionIndex,
         correctAnswers,
         answers,

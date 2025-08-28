@@ -8,7 +8,7 @@ export default function DisplayCardPosition({ card, size = 'Large' }) {
 
     return (
         <div className={style}>
-            <div className={size === 'Large' ? 'text-4xl' : 'text-2xl'}>{card.position}</div>
+            <div className="text-4xl">{card.position}</div>
         </div>
     );
 }

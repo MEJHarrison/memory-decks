@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { useQuiz } from '../../context/QuizContext';
+import CardAbbreviation from '../ui/CardAbbreviation';
 
 import Button from '../ui/Button';
 
@@ -15,29 +16,44 @@ export default function QuizResults() {
     };
 
     return (
-        <div>
-            <h1>QuizResults</h1>
+        <div className="flex min-h-screen flex-col items-center gap-8 p-8">
+            <h1 className="mt-8 text-5xl font-bold tracking-wide text-emerald-800 drop-shadow md:mt-12">QuizResults</h1>
 
-            <h2>
+            <h2 className="text-3xl font-bold text-emerald-700">
                 Score: {correctAnswers} / {numberOfQuestions}
             </h2>
 
             {correctAnswers !== numberOfQuestions && (
                 <div>
-                    <h2>You got some wrong. Let's review:</h2>
+                    <h2 className="text-xl font-bold text-emerald-700">You got some wrong.</h2>
+
                     {answers
                         .filter((answer) => !answer.isCorrect)
                         .map((answer, index) => (
-                            <div key={index}>
-                                <h3>{answer.questionText}</h3>
-                                <h3>
-                                    Question Card: {answer.questionCard.rank} of {answer.questionCard.suit}
+                            <div key={index} className="mt-6">
+                                <h3 className="text-lg text-emerald-600">
+                                    Card:{' '}
+                                    {answer.type === 'cardAtPosition' ? (
+                                        <>{answer.questionCard.position}</>
+                                    ) : (
+                                        <CardAbbreviation card={answer.questionCard} />
+                                    )}
                                 </h3>
-                                <h3>
-                                    You answered {answer.selectedAnswer.rank} of {answer.selectedAnswer.suit}.
-                                </h3>
-                                <h3>
-                                    The correct answer was {answer.answerCard.rank} of {answer.answerCard.suit}
+                                <h3 className="text-lg text-emerald-600">{answer.questionText}</h3>
+                                <h3 className="text-lg text-emerald-600">
+                                    The correct answer was{' '}
+                                    {answer.type === 'positionOfCard' ? (
+                                        <>{answer.answerCard.position}</>
+                                    ) : (
+                                        <CardAbbreviation card={answer.answerCard} />
+                                    )}
+                                    , but you answered{' '}
+                                    {answer.type === 'positionOfCard' ? (
+                                        <>{answer.selectedAnswer.position}</>
+                                    ) : (
+                                        <CardAbbreviation card={answer.selectedAnswer} />
+                                    )}
+                                    .
                                 </h3>
                             </div>
                         ))}
