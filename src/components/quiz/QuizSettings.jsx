@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useMatch, useNavigate } from 'react-router-dom';
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../../context/QuizContext';
 
-import Button from './Button';
+import Button from '../ui/Button';
 
 export default function QuizSettings() {
     const navigate = useNavigate();

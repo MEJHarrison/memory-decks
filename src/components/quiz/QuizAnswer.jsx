@@ -1,10 +1,10 @@
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../../context/QuizContext';
 
-import CardImage from './CardImage';
-import CardSymbol from './CardSymbol';
-import CardPosition from './CardPosition';
+import DisplayCardImage from '../ui/DisplayCardImage';
+import DisplayCardSymbol from '../ui/DisplayCardSymbol';
+import DisplayCardPosition from '../ui/DisplayCardPosition';
 
-export default function CardAnswer() {
+export default function QuizAnswer() {
     const { getCurrentQuestion, onAnswer } = useQuiz();
 
     const currentQuestion = getCurrentQuestion();
@@ -24,15 +24,19 @@ export default function CardAnswer() {
                 >
                     {/* Display this on screens > 640 width */}
                     <div className="hidden sm:block">
-                        {isPosition ? <CardPosition card={answerCard} /> : <CardImage card={answerCard} />}
+                        {isPosition ? (
+                            <DisplayCardPosition card={answerCard} />
+                        ) : (
+                            <DisplayCardImage card={answerCard} />
+                        )}
                     </div>
 
                     {/* Display for mobile screens */}
                     <div className="rounded-xl bg-white p-3 shadow-md sm:hidden">
                         {isPosition ? (
-                            <CardPosition card={answerCard} size="Small" />
+                            <DisplayCardPosition card={answerCard} size="Small" />
                         ) : (
-                            <CardSymbol card={answerCard} />
+                            <DisplayCardSymbol card={answerCard} />
                         )}
                     </div>
                 </button>

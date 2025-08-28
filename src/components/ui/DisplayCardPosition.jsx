@@ -1,4 +1,4 @@
-export default function CardPosition({ card, size = 'Large' }) {
+export default function DisplayCardPosition({ card, size = 'Large' }) {
     const largeStyle =
         'flex w-32 md:w-44 lg:w-52 aspect-[691/1056] items-center justify-center rounded-lg border-2 border-slate-300 bg-white text-black shadow-lg';
 

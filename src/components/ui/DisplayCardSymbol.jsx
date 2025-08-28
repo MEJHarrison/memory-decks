@@ -1,4 +1,4 @@
-export default function CardSymbol({ card }) {
+export default function DisplayCardSymbol({ card }) {
     const rankLetter = card.rank === '10' ? '10' : card.rank[0].toUpperCase();
 
     function getSuitSymbol(suitLetter) {

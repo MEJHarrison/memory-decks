@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 
 import MainMenu from './components/MainMenu';
-import Quiz from './components/Quiz';
-import Results from './components/Results';
+import QuizSettings from './components/quiz/QuizSettings';
+import Quiz from './components/quiz/Quiz';
+import QuizResults from './components/quiz/QuizResults';
 import ViewStack from './components/ViewStack';
 
 import './App.css';
-import QuizSettings from './components/QuizSettings';
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
             <Route path="/" element={<MainMenu />} />
             <Route path="/quiz-settings" element={<QuizSettings />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/results" element={<Results />} />
+            <Route path="/quiz-results" element={<QuizResults />} />
             <Route path="/view-stack" element={<ViewStack />} />
         </Routes>
     );

@@ -29,7 +29,7 @@ export function QuizProvider({ children }) {
 
     useEffect(() => {
         if (currentQuestionIndex >= quiz.length && quiz.length > 0) {
-            navigate('/results');
+            navigate('/quiz-results');
         }
     }, [currentQuestionIndex, quiz, navigate]);
 
@@ -89,7 +89,7 @@ export function QuizProvider({ children }) {
     }
 
     function handleFinish() {
-        navigate('/results');
+        navigate('/quiz-results');
     }
 
     const ctxValue = {

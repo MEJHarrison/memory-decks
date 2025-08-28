@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../../context/QuizContext';
 
-import Button from './Button';
+import Button from '../ui/Button';
 
-export default function Results() {
+export default function QuizResults() {
     const { correctAnswers, answers, numberOfQuestions, resetQuiz } = useQuiz();
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ export default function Results() {
 
     return (
         <div>
-            <h1>Results</h1>
+            <h1>QuizResults</h1>
 
             <h2>
                 Score: {correctAnswers} / {numberOfQuestions}

@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import deck from '../data/stacks/mnemonica.json';
 
-import Button from './Button';
-import CardImage from './CardImage';
+import Button from './ui/Button';
+import DisplayCardImage from './ui/DisplayCardImage';
 
 export default function FullStack() {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function FullStack() {
         <div>
             <div className="flex flex-wrap justify-center gap-2 p-2">
                 {deck.cards.map((card) => (
-                    <CardImage key={card.position} card={card} className="w-16 sm:w-32 md:w-40 lg:w-52" />
+                    <DisplayCardImage key={card.position} card={card} className="w-16 sm:w-32 md:w-40 lg:w-52" />
                 ))}
             </div>
 
