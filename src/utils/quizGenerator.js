@@ -1,4 +1,7 @@
-import deck from '../data/stacks/mnemonica.json';
+import mnemonica from '../data/stacks/mnemonica.json';
+import aronson from '../data/stacks/aronson.json';
+
+import { useQuiz } from '../context/QuizContext';
 
 function shuffleArray(array) {
     const newArray = [...array];
@@ -12,8 +15,10 @@ function shuffleArray(array) {
     return newArray;
 }
 
-function generateQuestion(type, index) {
-    const cards = deck.cards;
+function generateQuestion(type, index, stack) {
+    // const { stack } = useQuiz();
+
+    const cards = stack === 'mnemonica' ? mnemonica.cards : aronson.cards;
     const questionCard = cards[index];
     let answerCard = undefined;
     const exclude = new Set();
@@ -50,7 +55,7 @@ function generateQuestion(type, index) {
     };
 }
 
-export function generateQuiz(numQuestions = 10, minimumCard, maximumCard) {
+export function generateQuiz(numQuestions = 10, minimumCard, maximumCard, stack) {
     const types = ['nextCard', 'previousCard', 'positionOfCard', 'cardAtPosition'];
 
     const questions = [];
@@ -59,7 +64,7 @@ export function generateQuiz(numQuestions = 10, minimumCard, maximumCard) {
         const type = types[Math.floor(Math.random() * types.length)];
         const cardIndex = Math.floor(Math.random() * (maximumCard - minimumCard + 1)) + (minimumCard - 1);
 
-        questions.push(generateQuestion(type, cardIndex));
+        questions.push(generateQuestion(type, cardIndex, stack));
     }
 
     return questions;

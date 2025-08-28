@@ -9,8 +9,8 @@ export default function InputNumber({ labelText, minValue, maxValue, value, setV
                 value={value}
                 onChange={(e) => setValue(Number(e.target.value))}
                 onBlur={() => {
-                    if (numberOfQuestions < { minValue }) setValue({ minValue });
-                    if (numberOfQuestions > { maxValue }) setValue({ maxValue });
+                    if (value < { minValue }) setValue({ minValue });
+                    if (value > { maxValue }) setValue({ maxValue });
                 }}
                 className="w-12 rounded border bg-emerald-200 text-center text-lg shadow focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />

@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { useMatch, useNavigate } from 'react-router-dom';
-import { useQuiz } from '../../context/QuizContext';
 
-import Button from '../ui/Button';
-import InputNumber from '../ui/InputNumber';
+import { useQuiz } from '../context/QuizContext';
+
+import Button from './ui/Button';
+import InputNumber from './ui/InputNumber';
 
 export default function QuizSettings() {
     const navigate = useNavigate();
     const {
         generateNewQuiz,
+        stack,
+        setStack,
         numberOfQuestions,
         setNumberOfQuestions,
         minimumCard,
@@ -23,10 +26,36 @@ export default function QuizSettings() {
     }
 
     return (
-        <div className="flex min-h-screen flex-col items-center justify-start p-8">
-            <h1 className="mb-32 text-4xl font-bold">Quiz Settings</h1>
+        <div className="flex min-h-screen flex-col items-center justify-start">
+            <h1 className="mb-32 text-4xl font-bold">Settings</h1>
 
             <div className="flex flex-col items-start justify-start gap-4">
+                <label className="flex items-center gap-3 text-xl font-bold text-emerald-700">
+                    Stack
+                    <div className="flex items-center gap-6">
+                        <label className="flex items-center gap-2 font-normal text-emerald-700">
+                            <input
+                                type="radio"
+                                value="mnemonica"
+                                checked={stack === 'mnemonica'}
+                                onChange={() => setStack('mnemonica')}
+                                className="h-5 w-5 accent-emerald-600"
+                            />
+                            Mnemonica
+                        </label>
+                        <label className="flex items-center gap-2 font-normal text-emerald-700">
+                            <input
+                                type="radio"
+                                value="aronson"
+                                checked={stack === 'aronson'}
+                                onChange={() => setStack('aronson')}
+                                className="h-5 w-5 accent-emerald-600"
+                            />
+                            Aronson
+                        </label>
+                    </div>
+                </label>
+
                 <InputNumber
                     labelText={'Number of Questions'}
                     minValue={'5'}

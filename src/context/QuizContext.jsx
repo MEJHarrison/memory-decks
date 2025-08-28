@@ -12,6 +12,8 @@ const QuizContext = createContext({
     getCurrentQuestion: noop,
     getQuestionText: noop,
     onAnswer: noop,
+    stack: 'mnemonica',
+    setStack: noop,
     numberOfQuestions: 10,
     setNumberOfQuestions: noop,
     minimumCard: 1,
@@ -30,8 +32,10 @@ export function QuizProvider({ children }) {
     const [minimumCard, setMinimumCard] = useState(1);
     const [maximumCard, setMaximumCard] = useState(52);
     const [answers, setAnswers] = useState([]);
+    const [stack, setStack] = useState('mnemonica');
+    const [quiz, setQuiz] = useState(() => generateQuiz(10, 1, 52, stack));
+
     const navigate = useNavigate();
-    const [quiz, setQuiz] = useState(() => generateQuiz(10, 1, 52));
 
     useEffect(() => {
         if (currentQuestionIndex >= quiz.length && quiz.length > 0) {
@@ -54,7 +58,7 @@ export function QuizProvider({ children }) {
     function generateNewQuiz() {
         resetState();
 
-        setQuiz(generateQuiz(numberOfQuestions, minimumCard, maximumCard));
+        setQuiz(generateQuiz(numberOfQuestions, minimumCard, maximumCard, stack));
     }
 
     function getCurrentQuestion() {
@@ -106,6 +110,8 @@ export function QuizProvider({ children }) {
         getQuestionText,
         getCurrentQuestion,
         onAnswer: handleAnswer,
+        stack,
+        setStack,
         numberOfQuestions,
         setNumberOfQuestions,
         minimumCard,

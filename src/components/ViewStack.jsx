@@ -1,12 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 
-import deck from '../data/stacks/mnemonica.json';
+import mnemonica from '../data/stacks/mnemonica.json';
+import aronson from '../data/stacks/aronson.json';
 
 import Button from './ui/Button';
 import DisplayCardImage from './ui/DisplayCardImage';
 
+import { useQuiz } from '../context/QuizContext';
+
 export default function FullStack() {
     const navigate = useNavigate();
+    const { stack } = useQuiz();
+
+    const deck = stack === 'mnemonica' ? mnemonica : aronson;
 
     return (
         <div>
