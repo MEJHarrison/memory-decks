@@ -14,7 +14,7 @@ export default function FullStack() {
                 {deck.cards.map((card) => (
                     <div key={card.position} className="mb-4 text-center">
                         <DisplayCardImage card={card} mode={'Stack'} />
-                        <h2 className="text-lg font-bold md:text-3xl">{card.position}</h2>
+                        <h2 className="text-lg font-bold sm:text-3xl">{card.position}</h2>
                     </div>
                 ))}
             </div>
