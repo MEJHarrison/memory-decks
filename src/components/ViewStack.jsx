@@ -12,7 +12,10 @@ export default function FullStack() {
         <div>
             <div className="flex flex-wrap justify-center gap-2 p-2">
                 {deck.cards.map((card) => (
-                    <DisplayCardImage key={card.position} card={card} className="w-16 sm:w-32 md:w-40 lg:w-52" />
+                    <div key={card.position} className="mb-4 text-center">
+                        <DisplayCardImage card={card} mode={'Stack'} />
+                        <h2 className="text-lg font-bold md:text-3xl">{card.position}</h2>
+                    </div>
                 ))}
             </div>
 
