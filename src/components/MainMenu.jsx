@@ -24,7 +24,7 @@ export default function MainMenu() {
 
             <p>
                 This app will let you view the entire stack to learn the order of the cards. It will also quiz you to
-                cement what you've leared.
+                cement what you've learned.
             </p>
 
             <p>Learn the stack, then amaze audiences with your new skills!</p>
