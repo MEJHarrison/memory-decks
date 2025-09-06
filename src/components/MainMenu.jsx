@@ -24,10 +24,10 @@ export default function MainMenu() {
 
             <p>
                 This app will let you view the entire stack to learn the order of the cards. It will also quiz you to
-                ceement what you've leared.
+                cement what you've leared.
             </p>
 
-            <p>Learn the stack, then amaze audiences with you new skills!</p>
+            <p>Learn the stack, then amaze audiences with your new skills!</p>
 
             <div className="mt-12 flex flex-col items-center gap-8 md:mt-16 md:gap-12">
                 <Button onClick={startQuiz}>Start Quiz</Button>
