@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import mnemonica from '../data/stacks/mnemonica.json';
 import aronson from '../data/stacks/aronson.json';
 
-import Button from './ui/Button';
-import DisplayCardImage from './ui/DisplayCardImage';
+import Button from '../components/ui/Button';
+import DisplayCardImage from '../components/ui/DisplayCardImage';
 
 import { useQuiz } from '../context/QuizContext';
 

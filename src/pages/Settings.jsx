@@ -3,8 +3,8 @@ import { useMatch, useNavigate } from 'react-router-dom';
 
 import { useQuiz } from '../context/QuizContext';
 
-import Button from './ui/Button';
-import InputNumber from './ui/InputNumber';
+import Button from '../components/ui/Button';
+import InputNumber from '../components/ui/InputNumber';
 
 export default function QuizSettings() {
     const navigate = useNavigate();

@@ -1,9 +1,11 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+
 import { useQuiz } from '../../context/QuizContext';
 
 import DisplayCardImage from '../ui/DisplayCardImage';
 import DisplayCardSymbol from '../ui/DisplayCardSymbol';
 import DisplayCardPosition from '../ui/DisplayCardPosition';
-import { useState } from 'react';
 
 export default function QuizAnswer() {
     const [selectedCard, setSelectedCard] = useState(null);
@@ -35,6 +37,7 @@ export default function QuizAnswer() {
         <div className="grid w-full max-w-sm grid-cols-2 gap-4 lg:max-w-4xl lg:grid-cols-4">
             {questionAnswers.map((answerCard) => {
                 const showOverlay = selectedCard?.position === answerCard.position;
+                const isClicked = selectedCard?.position === answerCard.position;
 
                 return (
                     <div key={answerCard.position} className="relative rounded-xl">

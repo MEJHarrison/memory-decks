@@ -1,12 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 
-import MainMenu from './components/MainMenu';
-import Quiz from './components/quiz/Quiz';
-import QuizResults from './components/quiz/QuizResults';
-import ViewStack from './components/ViewStack';
-import Settings from './components/Settings';
-
-import './App.css';
+import MainMenu from './pages/MainMenu';
+import Quiz from './pages/Quiz';
+import QuizResults from './pages/QuizResults';
+import ViewStack from './pages/ViewStack';
+import Settings from './pages/Settings';
 
 function App() {
     return (

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useQuiz } from '../context/QuizContext';
 
-import Button from './ui/Button';
+import Button from '../components/ui/Button';
 
 export default function MainMenu() {
     const navigate = useNavigate();

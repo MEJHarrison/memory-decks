@@ -1,7 +1,7 @@
-import { useQuiz } from '../../context/QuizContext';
+import { useQuiz } from '../context/QuizContext';
 
-import QuizQuestion from './QuizQuestion';
-import QuizAnswer from './QuizAnswer';
+import QuizQuestion from '../components/quiz/QuizQuestion';
+import QuizAnswer from '../components/quiz/QuizAnswer';
 
 export default function Quiz() {
     const { getQuestionText } = useQuiz();

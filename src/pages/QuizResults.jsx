@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import { useQuiz } from '../../context/QuizContext';
-import CardAbbreviation from '../ui/CardAbbreviation';
+import { useQuiz } from '../context/QuizContext';
+import CardAbbreviation from '../components/ui/CardAbbreviation';
 
-import Button from '../ui/Button';
+import Button from '../components/ui/Button';
 
 export default function QuizResults() {
     const { correctAnswers, answers, numberOfQuestions, resetQuiz } = useQuiz();
