@@ -3,13 +3,23 @@ export default function DisplayCardImage({ card, mode = 'Quiz' }) {
     const suitLetter = card.suit[0].toUpperCase();
     const filename = `${rankLetter}${suitLetter}.png`;
 
-    let styles = '';
+    // aspect ratio matches poker card (691x1056)
+    const aspectClasses = 'aspect-[691/1056]';
 
+    let sizeClasses = '';
     if (mode === 'Quiz') {
-        styles = 'block w-40 shadow-lg md:w-44 lg:w-52';
+        sizeClasses = 'w-40 md:w-44 lg:w-52';
     } else {
-        styles = 'w-20 sm:w-44 lg:w-52';
+        sizeClasses = 'w-20 sm:w-44 lg:w-52';
     }
 
-    return <img src={`/cards/${filename}`} alt={`${card.rank} of ${card.suit}`} className={styles} />;
+    return (
+        <div className={`relative ${aspectClasses} ${sizeClasses}`}>
+            <img
+                src={`/cards/${filename}`}
+                alt={`${card.rank} of ${card.suit}`}
+                className="h-full w-full rounded-lg object-contain shadow-lg"
+            />
+        </div>
+    );
 }

@@ -10,6 +10,7 @@ import DisplayCardPosition from '../ui/DisplayCardPosition';
 export default function QuizAnswer() {
     const [selectedCard, setSelectedCard] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
+    //const [showBack, setShowBack] = useState(false);
 
     const { getCurrentQuestion, onAnswer } = useQuiz();
 
@@ -30,7 +31,7 @@ export default function QuizAnswer() {
             onAnswer(answerCard);
             setSelectedCard(null);
             setIsCorrect(null);
-        }, 1200);
+        }, 2500);
     }
 
     return (
@@ -38,9 +39,22 @@ export default function QuizAnswer() {
             {questionAnswers.map((answerCard) => {
                 const showOverlay = selectedCard?.position === answerCard.position;
                 const isClicked = selectedCard?.position === answerCard.position;
+                const showBackForCard = !isClicked && !isPosition && selectedCard !== null;
 
                 return (
-                    <div key={answerCard.position} className="relative rounded-xl">
+                    <motion.div
+                        key={answerCard.position}
+                        animate={{
+                            rotateY: selectedCard ? (isClicked ? 0 : 180) : 0,
+                        }}
+                        transition={{ duration: 0.6, ease: 'easeInOut' }}
+                        style={{ perspective: 1000, transformStyle: 'perserve-3d', position: 'ralative' }}
+                        //onUpdate={(latest) => {
+                        //    if (!isPosition && latest.rotateY > 90 && !showBack) setShowBack(true);
+                        //    if (!isPosition && latest.rotateY <= 90 && showBack) setShowBack(false);
+                        //}}
+                        className="relative rounded-xl"
+                    >
                         <button
                             key={answerCard.position}
                             onClick={() => handleClick(answerCard)}
@@ -50,6 +64,12 @@ export default function QuizAnswer() {
                             <div className="hidden sm:block">
                                 {isPosition ? (
                                     <DisplayCardPosition card={answerCard} />
+                                ) : showBackForCard ? (
+                                    <img
+                                        src="/cards/yellow_back.png"
+                                        alt="Back of card"
+                                        className="rounded-xl shadow-md"
+                                    />
                                 ) : (
                                     <DisplayCardImage card={answerCard} />
                                 )}
@@ -70,7 +90,7 @@ export default function QuizAnswer() {
                                 />
                             )}
                         </button>
-                    </div>
+                    </motion.div>
                 );
             })}
         </div>

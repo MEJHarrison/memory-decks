@@ -1,7 +1,8 @@
 import { useQuiz } from '../context/QuizContext';
 
 import QuizQuestion from '../components/quiz/QuizQuestion';
-import QuizAnswer from '../components/quiz/QuizAnswer';
+//import QuizAnswer from '../components/quiz/QuizAnswer';
+import QuizAnswers from '../components/quiz/QuizAnswers';
 
 export default function Quiz() {
     const { getQuestionText } = useQuiz();
@@ -11,7 +12,7 @@ export default function Quiz() {
             <div className="flex flex-col items-center gap-20">
                 <QuizQuestion />
                 <h1 className="text-xl font-bold text-emerald-900 drop-shadow-sm">{getQuestionText()}</h1>
-                <QuizAnswer />
+                <QuizAnswers />
             </div>
         </div>
     );

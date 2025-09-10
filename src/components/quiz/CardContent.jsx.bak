@@ -1,0 +1,25 @@
+import DisplayCardImage from '../ui/DisplayCardImage';
+import DisplayCardSymbol from '../ui/DisplayCardSymbol';
+import DisplayCardPosition from '../ui/DisplayCardPosition';
+
+export default function CardContent({ card, isPosition, showBack }) {
+    return (
+        <>
+            {/* Display this on screens > 640 width */}
+            <div className="hidden sm:block">
+                {isPosition ? (
+                    <DisplayCardPosition card={card} />
+                ) : showBack ? (
+                    <img src="/cards/yellow_back.png" alt="Back of card" className="rounded-xl shadow-md" />
+                ) : (
+                    <DisplayCardImage card={card} />
+                )}
+            </div>
+
+            {/* Display for mobile screens */}
+            <div className="rounded-xl bg-white p-3 shadow-md sm:hidden">
+                {isPosition ? <DisplayCardPosition card={card} size="Small" /> : <DisplayCardSymbol card={card} />}
+            </div>
+        </>
+    );
+}
