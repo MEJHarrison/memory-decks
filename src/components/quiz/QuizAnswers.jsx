@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import QuizCard from './QuizCard';
 import { useQuiz } from '../../context/QuizContext';
@@ -29,7 +30,15 @@ export default function QuizAnswers() {
     }
 
     return (
-        <div className="grid w-full max-w-sm grid-cols-2 gap-4 lg:max-w-4xl lg:grid-cols-4">
+        <motion.div
+            key={currentQuestion.id}
+            initial="hidden"
+            animate="visible"
+            variants={{
+                visible: { transition: { staggerChildren: 0.1 } },
+            }}
+            className="grid w-full max-w-sm grid-cols-2 gap-4 lg:max-w-4xl lg:grid-cols-4"
+        >
             {questionAnswers.map((answerCard) => (
                 <QuizCard
                     key={answerCard.position}
@@ -41,6 +50,6 @@ export default function QuizAnswers() {
                     questionId={currentQuestion.id}
                 />
             ))}
-        </div>
+        </motion.div>
     );
 }

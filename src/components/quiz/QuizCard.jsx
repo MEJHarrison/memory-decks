@@ -2,13 +2,18 @@ import { motion, useAnimation } from 'framer-motion';
 import { useState } from 'react';
 import CardContent from './CardContent.jsx';
 
+const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+};
+
 export default function QuizCard({ card, isPosition, selectedCard, isCorrect, onClick, questionId }) {
     const isClicked = selectedCard?.position === card.position;
     const isInactive = isPosition && selectedCard && !isClicked;
     const [flipped, setFlipped] = useState(false);
 
     return (
-        <div className="relative w-full rounded-xl">
+        <motion.div variants={cardVariants} className="relative w-full rounded-xl">
             <div className="hidden sm:block">
                 <motion.button
                     key={`${questionId}-${card.position}`}
@@ -74,6 +79,6 @@ export default function QuizCard({ card, isPosition, selectedCard, isCorrect, on
                     )}
                 </motion.button>
             </div>
-        </div>
+        </motion.div>
     );
 }
